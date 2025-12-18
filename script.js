@@ -155,11 +155,15 @@ async function sendMessage() {
   }, 300);
 
   try {
-    const res = await fetch("http://localhost:5000/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message })
-    });
+    const res = await fetch("https://neel-ai-backend.onrender.com/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    message: userMessage
+  })
+});
 
     if (!res.ok) {
       throw new Error(`Server responded with status: ${res.status}`);
